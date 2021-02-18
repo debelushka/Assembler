@@ -1,0 +1,67 @@
+.686
+include \masm32\include\io.asm
+
+.data
+    A DW 0
+    B DW 1
+    N DW ?
+    D DW ?
+    I DW 1
+    
+.code
+LStart:  
+    println "print N"
+    inint N
+    outint A
+    println
+    outint B
+    println
+    mov CX,N
+L1: mov AX, A
+    inc I
+    ADD AX, B
+    mov D, AX
+    outint D
+    println
+    mov BX, B
+    mov A,BX
+    mov AX, D
+    mov B,AX
+    cmp I, CX
+    JNE L1
+    println "end"
+   
+    mov DX, 0
+    mov A, DX
+    mov DX, 1
+    mov B, DX
+    println "print fibonacci number"
+    inint N
+    outint A
+    println
+    outint B
+    println
+    mov CX,N
+L2: mov AX, A
+    ADD AX, B
+    mov D, AX
+    outint D
+    println
+    mov BX, B
+    mov A,BX
+    mov AX, D
+    mov B,AX
+    cmp N, AX
+    JNE L2
+    
+    println "your number true fibonacci"
+   
+   
+   
+   
+LExit:
+
+	newline
+	inkey "Press any key to exit."
+    exit
+end LStart
